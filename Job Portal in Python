@@ -1,0 +1,49 @@
+class JobPortal:
+    def __init__(self):
+        # Dictionary to store job details with job title as the key
+        self.jobs = {}
+
+        # Number of jobs to be added
+        self.num_jobs = 10
+
+        # Loop to input job details
+        for i in range(1, self.num_jobs + 1):
+            job_title = input(f"Enter the title of Job {i}: ")
+            company_name = input(f"Enter the name of Company offering {
+job_title}: ")
+            vacancies = int(input(f"Enter the number of vacancies for {job_title}: "))
+            location = input(f"Enter the location for {company_name}: ")
+            description = input(f"Enter the job description for {job_title}: ")
+
+            # Store the job details in the dictionary
+            self.jobs[job_title] = {
+                "Company": company_name,
+                "Vacancies": vacancies,
+                "Location": location,
+                "Description": description
+            }
+    
+    def display_vacancies(self, job_title):
+        # Check if the job title exists in the dictionary
+        if job_title in self.jobs:
+            # Fetch job details
+            job_details = self.jobs[job_title]
+
+            # Display job details
+            print(f"Job Title: {job_title}")
+            print(f"Company: {job_details['Company']}")
+            print(f"Vacancies: {job_details['Vacancies']}")
+            print(f"Location: {job_details['Location']}")
+            print(f"Description: {job_details['Description']}")
+        else:
+            # Job not found case
+            print("Job not found.")
+
+# Create an instance of JobPortal
+portal = JobPortal()
+
+# Input to check the details of a specific job title
+job_title = input("Enter the title of the job to check details: ")
+
+# Display the details of the specified job
+portal.display_vacancies(job_title)
